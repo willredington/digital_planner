@@ -26,7 +26,63 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const InkWellWidget(),
+      appBar: AppBar(title: const Text("My App")),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+            child: const Text("MARCH"),
+          ),
+          const Divider(),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+            child: const Text("Monday"),
+          ),
+          const Divider(),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+            child: const Text("Tuesday"),
+          ),
+          const Divider(),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+            child: const Text("Wednesday"),
+          ),
+          const Divider(),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+            child: const Text("Thursday"),
+          ),
+          const Divider(),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+            child: const Text("Friday"),
+          ),
+          const Divider(),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+            child: const Text("Weekend"),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.call),
+            label: 'Calls',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.camera),
+            label: 'Camera',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Chats',
+          ),
+        ],
+      ),
     );
   }
 }
