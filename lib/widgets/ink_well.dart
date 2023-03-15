@@ -19,23 +19,25 @@ class _InkWellWidgetState extends State<InkWellWidget> {
 
   final Ink _ink = Ink();
 
-  List<StrokePoint> _points = [];
-
   @override
   void dispose() {
     _digitalInkRecognizer.close();
     super.dispose();
   }
 
-  Future<void> _recognizeText() async {
+  _onReset() {
+    setState(() {
+      _ink.strokes.clear();
+    });
+  }
+
+  Future<void> _onRecognizeText() async {
     var isDownloaded = await _modelManager.isModelDownloaded(_languageCode);
 
     if (!isDownloaded) {
       await _modelManager.downloadModel(_languageCode);
-      print("downloaded model");
     }
 
-    print("getting results");
     var results = await _digitalInkRecognizer.recognize(_ink);
 
     // first result is what algorithm thinks is most accurate
@@ -46,38 +48,43 @@ class _InkWellWidgetState extends State<InkWellWidget> {
 
   @override
   Widget build(BuildContext context) {
+    var canRecognize = _ink.strokes.isNotEmpty;
+
     return SafeArea(
         child: Column(children: [
-      TextButton(
-          onPressed: _recognizeText, child: const Text("Recognize Text")),
+      Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ElevatedButton(
+                  onPressed: canRecognize ? _onRecognizeText : null,
+                  child: const Text("Recognize Text")),
+              ElevatedButton(onPressed: _onReset, child: const Text("Reset"))
+            ],
+          )),
       Expanded(
           child: GestureDetector(
         onPanStart: (DragStartDetails details) {
+          print('creating new stroke');
           _ink.strokes.add(Stroke());
         },
         onPanUpdate: (DragUpdateDetails details) {
+          print('update stroke');
           setState(() {
-            final RenderObject? object = context.findRenderObject();
-
-            final localPosition =
-                (object as RenderBox?)?.globalToLocal(details.localPosition);
-
-            if (localPosition != null) {
-              _points = List.from(_points)
-                ..add(StrokePoint(
-                  x: localPosition.dx,
-                  y: localPosition.dy,
-                  t: DateTime.now().millisecondsSinceEpoch,
-                ));
-            }
-
             if (_ink.strokes.isNotEmpty) {
-              _ink.strokes.last.points = _points.toList();
+              _ink.strokes.last.points.add(StrokePoint(
+                x: details.localPosition.dx,
+                y: details.localPosition.dy,
+                t: DateTime.now().millisecondsSinceEpoch,
+              ));
             }
           });
         },
         onPanEnd: (DragEndDetails details) {
-          setState(() => _points.clear());
+          print('stroke end');
+          // setState(() => _ink.strokes.clear());
         },
         child: CustomPaint(
           painter: Signature(ink: _ink),
