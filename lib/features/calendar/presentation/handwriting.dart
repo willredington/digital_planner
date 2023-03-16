@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart' hide Ink;
 import 'package:google_mlkit_digital_ink_recognition/google_mlkit_digital_ink_recognition.dart';
 
-class InkWellWidget extends StatefulWidget {
-  const InkWellWidget({super.key});
+class HandwritingWidget extends StatefulWidget {
+  const HandwritingWidget({super.key});
 
   @override
-  State<InkWellWidget> createState() => _InkWellWidgetState();
+  State<HandwritingWidget> createState() => _HandwritingWidgetState();
 }
 
-class _InkWellWidgetState extends State<InkWellWidget> {
+class _HandwritingWidgetState extends State<HandwritingWidget> {
   final DigitalInkRecognizerModelManager _modelManager =
       DigitalInkRecognizerModelManager();
 

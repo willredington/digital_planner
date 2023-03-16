@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:planner/utils/date.dart';
-import 'package:planner/widgets/week_day.dart';
-import 'package:planner/widgets/week_header.dart';
+
+import 'week_day.dart';
+import 'week_header.dart';
 
 class WeekWidget extends StatefulWidget {
   final DateTime now = DateTime.now();
