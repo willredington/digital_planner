@@ -1,0 +1,4 @@
+enum CalendarViewMode {
+  day,
+  week,
+}
