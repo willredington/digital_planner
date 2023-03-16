@@ -25,7 +25,6 @@ class _WeekdayWidgetState extends State<WeekdayWidget> {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-          color: Colors.amber.shade100,
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

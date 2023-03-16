@@ -11,7 +11,6 @@ class WeekHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
         child: Container(
-      color: Colors.amber.shade100,
       padding: const EdgeInsets.only(top: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
