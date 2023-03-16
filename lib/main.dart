@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'widgets/ink_well.dart';
+import 'package:planner/widgets/week.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,46 +26,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("My App")),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
-            child: const Text("MARCH"),
-          ),
-          const Divider(),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
-            child: const Text("Monday"),
-          ),
-          const Divider(),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
-            child: const Text("Tuesday"),
-          ),
-          const Divider(),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
-            child: const Text("Wednesday"),
-          ),
-          const Divider(),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
-            child: const Text("Thursday"),
-          ),
-          const Divider(),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
-            child: const Text("Friday"),
-          ),
-          const Divider(),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
-            child: const Text("Weekend"),
-          ),
-        ],
-      ),
+      body: WeekWidget(),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
