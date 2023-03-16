@@ -33,7 +33,7 @@ class _CalendarWeekdayWidgetState extends State<CalendarWeekdayWidget> {
         child: GestureDetector(
           behavior: HitTestBehavior.translucent,
           onTap: () => widget.onClick(),
-          child: Row(
+          child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
