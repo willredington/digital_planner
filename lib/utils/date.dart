@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 List<DateTime> getWeekDateRange(DateTime now) {
   final dayIndex = now.weekday;
 
@@ -16,4 +18,21 @@ List<DateTime> getWeekDateRange(DateTime now) {
   }
 
   return dateRange;
+}
+
+String getDayName(DateTime date) {
+  return DateFormat('EEEE').format(date);
+}
+
+String getDayOfMonth(DateTime date) {
+  return DateFormat('d').format(date);
+}
+
+String getMonthName(DateTime date) {
+  return DateFormat('MMMM').format(date);
+}
+
+int getWeekOfYear(DateTime date) {
+  final dayOfYear = DateFormat('D').format(date);
+  return (int.parse(dayOfYear) / 7).round();
 }

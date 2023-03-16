@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:planner/utils/date.dart';
 
-class WeekHeaderWidget extends StatelessWidget {
-  final String title;
-  final int weekNumber;
+class CalendarWeekHeaderWidget extends StatelessWidget {
+  final DateTime date;
 
-  const WeekHeaderWidget(
-      {super.key, required this.title, required this.weekNumber});
+  late final String title;
+  late final int weekNumber;
+
+  CalendarWeekHeaderWidget({super.key, required this.date}) {
+    title = getMonthName(date).toUpperCase();
+    weekNumber = getWeekOfYear(date);
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,26 +1,24 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:planner/utils/date.dart';
 
-class WeekdayWidget extends StatefulWidget {
+class CalendarWeekdayWidget extends StatefulWidget {
   final DateTime date;
 
   late final bool isLast;
   late final String dayName;
   late final String dayOfMonth;
 
-  WeekdayWidget({super.key, required this.date}) {
+  CalendarWeekdayWidget({super.key, required this.date}) {
     isLast = date.weekday == 7;
-    dayName = DateFormat('EEEE').format(date);
-    dayOfMonth = DateFormat('d').format(date);
+    dayName = getDayName(date);
+    dayOfMonth = getDayOfMonth(date);
   }
 
   @override
-  State<WeekdayWidget> createState() => _WeekdayWidgetState();
+  State<CalendarWeekdayWidget> createState() => _CalendarWeekdayWidgetState();
 }
 
-class _WeekdayWidgetState extends State<WeekdayWidget> {
+class _CalendarWeekdayWidgetState extends State<CalendarWeekdayWidget> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
