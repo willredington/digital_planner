@@ -9,29 +9,28 @@ class WeekHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 100,
-        color: Colors.green,
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        title.toUpperCase(),
-                        textScaleFactor: 2,
-                      ),
-                      Text('week $weekNumber'),
-                    ]),
-              ),
-              const Divider()
-            ],
+    return Expanded(
+        child: Container(
+      color: Colors.amber.shade100,
+      padding: const EdgeInsets.only(top: 10),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    title.toUpperCase(),
+                    textScaleFactor: 1.5,
+                  ),
+                  Text('week $weekNumber'),
+                ]),
           ),
-        ));
+          const Divider()
+        ],
+      ),
+    ));
   }
 }

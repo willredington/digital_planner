@@ -10,7 +10,6 @@ class WeekWidget extends StatefulWidget {
 
   WeekWidget({super.key}) {
     dateRange = getWeekDateRange(now);
-    print(dateRange);
   }
 
   @override

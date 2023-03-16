@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -21,20 +23,20 @@ class WeekdayWidget extends StatefulWidget {
 class _WeekdayWidgetState extends State<WeekdayWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.orange,
-      height: 120,
-      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Column(
+    return Expanded(
+      child: Container(
+          color: Colors.amber.shade100,
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Text(widget.dayName), Text(widget.dayOfMonth)],
-            ),
-            if (!widget.isLast) const Divider()
-          ]),
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [Text(widget.dayName), Text(widget.dayOfMonth)],
+                ),
+                if (!widget.isLast) const Divider()
+              ])),
     );
   }
 }
