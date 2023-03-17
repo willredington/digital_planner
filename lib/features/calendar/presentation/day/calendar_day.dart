@@ -17,6 +17,7 @@ class _CalendarDayWidgetState extends State<CalendarDayWidget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      fit: StackFit.expand,
       children: [
         CustomPaint(
           foregroundPainter: NotebookLinesWidget(),
@@ -31,7 +32,8 @@ class _CalendarDayWidgetState extends State<CalendarDayWidget> {
               getDayMonth(widget.date),
               textScaleFactor: 1.75,
               style: TextStyle(color: Colors.grey.shade700),
-            )
+            ),
+            const Text("stuff goes here")
           ]),
         )
       ],
