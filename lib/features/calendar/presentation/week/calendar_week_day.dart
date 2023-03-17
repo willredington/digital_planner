@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:planner/features/calendar/presentation/calendar_week_day_preview.dart';
 import 'package:planner/utils/date.dart';
+
+import 'calendar_week_day_preview.dart';
 
 class CalendarWeekdayWidget extends StatefulWidget {
   final DateTime date;

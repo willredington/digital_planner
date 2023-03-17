@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:planner/features/calendar/model/calendar_view_mode.dart';
+import 'package:go_router/go_router.dart';
 import 'package:planner/utils/date.dart';
 
 import 'calendar_week_day.dart';
@@ -15,28 +15,11 @@ class CalendarWeekWidget extends StatefulWidget {
 class _CalendarWeekWidgetState extends State<CalendarWeekWidget> {
   final DateTime _now = DateTime.now();
 
-  CalendarViewMode _viewMode = CalendarViewMode.week;
-
-  late DateTime _activeDate;
-
   late final List<DateTime> _dateRange;
-
-  _onViewModeChange(CalendarViewMode mode) {
-    setState(() {
-      _viewMode = mode;
-    });
-  }
-
-  _onDayChange(DateTime day) {
-    setState(() {
-      _activeDate = day;
-    });
-  }
 
   @override
   void initState() {
     _dateRange = getWeekDateRange(_now);
-    _activeDate = _now;
     super.initState();
   }
 
@@ -45,8 +28,8 @@ class _CalendarWeekWidgetState extends State<CalendarWeekWidget> {
     final weekDayWidgets = _dateRange
         .map((date) => CalendarWeekdayWidget(
               date: date,
-              onClick: () => _onDayChange(date),
-              isActive: date.compareTo(_activeDate) == 0,
+              isActive: date.compareTo(_now) == 0,
+              onClick: () => context.go("/calendar/${date.toString()}"),
             ))
         .toList();
 

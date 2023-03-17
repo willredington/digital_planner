@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:planner/features/calendar/calendar.dart';
+import 'package:planner/features/calendar/presentation/day/calendar_day.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> _shellNavigatorKey =
@@ -56,19 +57,13 @@ final router = GoRouter(
           builder: (BuildContext context, GoRouterState state) {
             return const CalendarScreen();
           },
+          routes: [
+            GoRoute(
+                path: ":date",
+                builder: (context, state) =>
+                    CalendarDayWidget(dateStr: state.params['date']!))
+          ],
         ),
-        // GoRoute(
-        //   path: '/search',
-        //   builder: (BuildContext context, GoRouterState state) {
-        //     return const Center(child: Text('Search'));
-        //   },
-        // ),
-        // GoRoute(
-        //   path: '/account',
-        //   builder: (BuildContext context, GoRouterState state) {
-        //     return const Center(child: Text('Account'));
-        //   },
-        // ),
       ],
     ),
   ],

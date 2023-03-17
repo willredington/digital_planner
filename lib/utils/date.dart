@@ -28,6 +28,10 @@ String getDayOfMonth(DateTime date) {
   return DateFormat('d').format(date);
 }
 
+String getDayMonth(DateTime date) {
+  return DateFormat('EEEE, MMMM d').format(date);
+}
+
 String getMonthName(DateTime date) {
   return DateFormat('MMMM').format(date);
 }
