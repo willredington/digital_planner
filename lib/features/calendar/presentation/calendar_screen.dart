@@ -7,6 +7,6 @@ class CalendarScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CalendarWeekWidget();
+    return const CalendarWeekWidget();
   }
 }
