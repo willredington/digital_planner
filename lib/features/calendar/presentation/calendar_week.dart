@@ -42,7 +42,6 @@ class _CalendarWeekWidgetState extends State<CalendarWeekWidget> {
 
   @override
   Widget build(BuildContext context) {
-    print(_activeDate);
     final weekDayWidgets = _dateRange
         .map((date) => CalendarWeekdayWidget(
               date: date,
@@ -53,7 +52,6 @@ class _CalendarWeekWidgetState extends State<CalendarWeekWidget> {
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [CalendarWeekHeaderWidget(date: _now), ...weekDayWidgets],
     );
   }

@@ -14,27 +14,20 @@ class CalendarWeekHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: Container(
-      padding: const EdgeInsets.only(top: 10),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    title.toUpperCase(),
-                    textScaleFactor: 1.5,
-                  ),
-                  Text('week $weekNumber'),
-                ]),
-          ),
-          const Divider()
-        ],
-      ),
-    ));
+    return Container(
+        padding: const EdgeInsets.only(top: 10),
+        decoration: const BoxDecoration(
+            border: Border(bottom: BorderSide(color: Colors.grey))),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Text(
+              title.toUpperCase(),
+              textScaleFactor: 1.5,
+            ),
+            Text('week $weekNumber'),
+          ]),
+        ));
   }
 }

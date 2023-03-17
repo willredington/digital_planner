@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:planner/features/calendar/presentation/calendar_week_day_preview.dart';
 import 'package:planner/utils/date.dart';
 
 class CalendarWeekdayWidget extends StatefulWidget {
@@ -28,16 +29,17 @@ class _CalendarWeekdayWidgetState extends State<CalendarWeekdayWidget> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: GestureDetector(
-          behavior: HitTestBehavior.translucent,
-          onTap: () => widget.onClick(),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
+      child: GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onTap: () => widget.onClick(),
+        child: Container(
+          decoration: const BoxDecoration(
+              border: Border(bottom: BorderSide(color: Colors.grey))),
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(5),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -49,8 +51,13 @@ class _CalendarWeekdayWidgetState extends State<CalendarWeekdayWidget> {
                     )
                   ],
                 ),
-                if (!widget.isLast) const Divider()
-              ]),
+              ),
+              const SizedBox(
+                width: 50,
+              ),
+              const CalendarWeekdayPreviewWidget()
+            ],
+          ),
         ),
       ),
     );
